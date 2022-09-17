@@ -1,25 +1,14 @@
-import {AppBar, Avatar, Box, Icon, Tab, Tabs, Typography} from "@mui/material";
-import {useState} from "react";
+import {AppBar, Avatar, Tab, Tabs, Typography} from "@mui/material";
+import {useEffect, useState} from "react";
+import Link from "next/link";
+import {useRouter} from "next/router";
 
 export default function Navbar() {
+    const router = useRouter();
     const [value, setValue] = useState(0);
-
-    function TabPanel(props) {
-        const { children, value, index, ...other } = props;
-
-        return (
-            <Typography
-                component="div"
-                role="tabpanel"
-                hidden={value !== index}
-                id={`scrollable-auto-tabpanel-${index}`}
-                aria-labelledby={`scrollable-auto-tab-${index}`}
-                {...other}
-            >
-                <Box p={3}>{children}</Box>
-            </Typography>
-        );
-    }
+    useEffect(() => {
+        setValue(router.pathname !== '/kitchen' ? 0 : 1)
+    }, [router])
 
     function a11yProps(index) {
         return {
@@ -34,9 +23,11 @@ export default function Navbar() {
     return (
         <div style={{display: "flex", justifyContent: 'space-between'}}>
             <div style={{width: '100%'}}>
-            <AppBar position="static" color="default" style={{ backgroundColor: "white", display: "flex", justifyContent: 'space-between', flexDirection: "inherit"}}>
+            <AppBar position="static" color="default" style={{ backgroundColor: "white", display: "flex", justifyContent: 'space-between', flexDirection: "inherit", padding: '0 40px 0 40px'}}>
                 <div style={{ width: "max-content", display: "flex", justifyContent: 'space-between', flexDirection: "inherit"}}>
-                    <img alt="Remy Sharp" src="https://bandapixels.com/images/logo-black.svg" style={{ width: '156px', height: '53px', marginRight: '20px', padding: '0 0 0 25px'}} />
+                    <div style={{ padding: '30px 0 0 0'}}>
+                        <img alt="Remy Sharp" src="https://bandapixels.com/images/logo-black.svg" style={{ width: '148px', height: '40px', marginRight: '20px'}} />
+                    </div>
                     <Tabs
                         style={{ width: "max-content"}}
                         value={value}
@@ -47,21 +38,18 @@ export default function Navbar() {
                         scrollButtons="auto"
                         aria-label="scrollable auto tabs example"
                     >
-                        <Tab style={{ padding: '10px 16px 0 16px'}} label="Перемовки" {...a11yProps(0)} />
-                        <Tab style={{ padding: '10px 16px 0 16px'}} label="Їжа приймалки" {...a11yProps(1)} />
+                        <Link href={'/rooms'}>
+                            <Tab style={{ padding: '45px 16px 25px 16px'}} label="Перемовки" {...a11yProps(0)} />
+                        </Link>
+                       <Link  href={'/kitchen'}>
+                           <Tab style={{ padding: '45px 16px 25px 16px'}} label="Їжа приймалки" {...a11yProps(1)} />
+                       </Link>
                     </Tabs>
                 </div>
-                <div style={{ padding: '0 20px', display: "flex", justifyContent: "flex-end", alignItems: "center", width: "max-content"}}>
+                <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", width: "max-content"}}>
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                    <Typography style={{ color: "black", marginLeft: '10px'}}>Best user</Typography>
                 </div>
             </AppBar>
-            <TabPanel value={value} index={0}>
-                <Typography style={{ color: "black"}}>Перемовки</Typography>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <Typography style={{ color: "black"}}>Їжа приймалки</Typography>
-            </TabPanel>
             </div>
         </div>
     )
