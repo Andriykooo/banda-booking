@@ -1,36 +1,60 @@
 import * as React from 'react';
-import {Box, Button, FormControl, TextField} from "@mui/material";
-import {useState} from "react";
-import {yellow} from "@mui/material/colors";
+import {Box, Button, FormControl, TextField, Typography} from "@mui/material";
+import {useEffect, useState} from "react";
+import image from '../../public/images/bg.png';
+// const Image = require('/public/images/bg.png');
+
 
 const Index = () => {
+  const [validate, setValidate] = useState(false);
   const [auth, setAuth] = useState({
     email: '',
     password: ''
   })
-  const handlerOnChange = (e) =>{
+  const handlerOnChange = (e) => {
     const {name, value} = e.target
-    setAuth(prevState => ({
-      ...prevState,
-        [name]: value
-    }))
+
+    setAuth({
+      ...auth,
+      [name]: value
+    })
   }
+
+  useEffect(()=>{
+    console.log(validate)
+
+  },[validate]);
 
   return (
     <Box sx={{
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
+      backgroundSize: 'cover',
+      backgroundImage: `url(/images/bg.png)`,
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-    }}>
+      height: '100vh'
+    }}
+    >
+
       <FormControl sx={{
-        width: '830px',
+        borderRadius:"20px",
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: '10px'
+        gap: '20px',
+        marginTop:'20px',
+        background: '#F5F5F5',
+        padding: '40px'
       }}>
+
+        <Typography variant="h4" component="h4">
+          Sign up, please
+        </Typography>
+
         <TextField
           required
           sx={{
@@ -59,12 +83,13 @@ const Index = () => {
           value={auth.password}
           onChange={(e) => handlerOnChange(e)}
         />
+        <Button>Forgot password?</Button>
         <Button sx={{
-          width:'480px',
+          width: '480px',
           height: '70px',
           background: '#EFE314',
           borderRadius: '48px',
-          color:'#333333'
+          color: '#333333'
         }} type={"submit"}> Login</Button>
 
 
