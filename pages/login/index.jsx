@@ -22,7 +22,6 @@ const Index = () => {
 
   useEffect(()=>{
     console.log(validate)
-
   },[validate]);
 
   return (
