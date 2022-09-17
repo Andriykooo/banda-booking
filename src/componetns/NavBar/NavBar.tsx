@@ -56,12 +56,7 @@ export default function Navbar() {
                     <Typography style={{ color: "black", marginLeft: '10px'}}>Best user</Typography>
                 </div>
             </AppBar>
-            <TabPanel value={value} index={0}>
-                <Typography style={{ color: "black"}}>Перемовки</Typography>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <Typography style={{ color: "black"}}>Їжа приймалки</Typography>
-            </TabPanel>
+       
             </div>
         </div>
     )
