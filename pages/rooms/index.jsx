@@ -1,5 +1,4 @@
 import { Box, Typography } from '@mui/material';
-import { Container } from '@mui/system';
 import * as React from 'react';
 
 const Room = ({ children, number, icon }) => {
@@ -20,7 +19,7 @@ const Room = ({ children, number, icon }) => {
       <Typography
         variant='h3'
         component='h3'
-        sx={{ color: '#b9b9b9', top: '37px', left: '13px', position: 'absolute' }}
+        sx={{ fontFamily: 'Inter', color: '#b9b9b9', top: '37px', left: '13px', position: 'absolute' }}
       >
         {number}
       </Typography>
@@ -29,37 +28,67 @@ const Room = ({ children, number, icon }) => {
   );
 };
 
+const Subtitle = ({ children }) => {
+  return (
+    <Typography
+      sx={{
+        fontFamily: 'Inter',
+        fontWeight: 600,
+        fontSize: '24px',
+      }}
+    >
+      {children}
+    </Typography>
+  );
+};
+
 const Rooms = () => {
   return (
-    <Container sx={{margin: '20px auto'}}>
-      <Box sx={{ margin: '10px 0', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-        <Typography>First Building</Typography>
-        <Typography>Second Building</Typography>
-      </Box>
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'minmax(20%, 492px)',
-            gridTemplateRows: 'repeat(2, minmax(20%, 375px))',
-            gap: '27px',
-            marginRight: '20px',
-          }}
-        >
-          <Room number='1' icon={'/images/room-6.svg'} />
-          <Room number='2' icon={'/images/room-6.svg'} />
+    <>
+      <Typography
+        sx={{
+          fontFamily: 'Inter',
+          fontStyle: 'normal',
+          fontWeight: '600',
+          fontSize: '64px',
+          lineHeight: '16px',
+          color: '#B9B9B9',
+        }}
+        gutterBottom
+        component='div'
+      >
+        TALKING ROOMS
+      </Typography>
+      <Box sx={{margin: '0 auto'}}>
+        <Box sx={{ margin: '10px 0', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          <Subtitle>FIRST BUILDING</Subtitle>
+          <Subtitle>SECOND BUILDING</Subtitle>
         </Box>
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px' }}>
-          <Box sx={{ display: 'grid', gridTemplateRows: '30%', gap: '14px' }}>
-            <Room number='1' icon={'/images/room-2.svg'} />
-            <Room number='2' icon={'/images/room-5.svg'} />
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(100px, 480px)',
+              gridTemplateRows: 'repeat(2, minmax(100px, 300px))',
+              gap: '27px',
+              marginRight: '20px',
+            }}
+          >
+            <Room number='1' icon={'/images/room-6.svg'} />
+            <Room number='2' icon={'/images/room-6.svg'} />
           </Box>
-          <Box sx={{ display: 'grid', gridTemplateRows: '329px', alignContent: 'end', gap: '10px' }}>
-            <Room number='3' icon={'/images/room-3.svg'} />
+          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px' }}>
+            <Box sx={{ display: 'grid', gridTemplateRows: '250px 363px', gap: '14px' }}>
+              <Room number='1' icon={'/images/room-2.svg'} />
+              <Room number='2' icon={'/images/room-5.svg'} />
+            </Box>
+            <Box sx={{ display: 'grid', gridTemplateRows: '250px', alignContent: 'end', gap: '10px' }}>
+              <Room number='3' icon={'/images/room-3.svg'} />
+            </Box>
           </Box>
         </Box>
       </Box>
-    </Container>
+    </>
   );
 };
 
