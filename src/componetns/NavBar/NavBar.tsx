@@ -7,7 +7,7 @@ export default function Navbar() {
     const router = useRouter();
     const [value, setValue] = useState(0);
     useEffect(() => {
-        setValue(router.pathname !== '/kitchen' ? 0 : 1)
+        setValue(router.pathname === '/account' ? 3 : router.pathname !== '/kitchen' ? 0 : 1)
     }, [router])
 
     function a11yProps(index) {
@@ -46,9 +46,11 @@ export default function Navbar() {
                        </Link>
                     </Tabs>
                 </div>
-                <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", width: "max-content"}}>
+                <Link href={'/account'}>
+                <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", width: "max-content", cursor: "pointer"}}>
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                 </div>
+                </Link>
             </AppBar>
             </div>
         </div>
