@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {Box, Button, FormControl, TextField, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
-import image from '../../public/images/bg.png';
-// const Image = require('/public/images/bg.png');
+import request from '../../src/api/auth-request'
+import {useRouter} from "next/router";
 
 
 const Index = () => {
+  const router =useRouter();
   const [validate, setValidate] = useState(false);
   const [auth, setAuth] = useState({
     email: '',
@@ -21,6 +22,12 @@ const Index = () => {
   }
 
   useEffect(()=>{
+    if(auth.email && auth.password){
+      request.loginUser(auth.email, auth.password).then(()=>{
+        router.push('/rooms')
+      })
+    }
+
     console.log(validate)
   },[validate]);
 
