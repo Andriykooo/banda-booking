@@ -25,3 +25,7 @@ a {
     background: white;
   }
 }
+
+.MuiTabs-indicator {
+  background-color: black;
+}
