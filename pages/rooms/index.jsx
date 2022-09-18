@@ -1,7 +1,9 @@
 import { Box, Typography } from '@mui/material';
 import * as React from 'react';
+import {useState} from "react";
+import {BookingModal} from "../../src/componetns/Modal/BookingModal";
 
-const Room = ({ number, icon }) => {
+const Room = ({ number, icon ,openModal}) => {
   return (
     <Box
       sx={{
@@ -14,6 +16,9 @@ const Room = ({ number, icon }) => {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '50px',
+      }}
+      onClick={() => {
+        openModal(number)
       }}
     >
       <Typography
@@ -64,54 +69,80 @@ const Subtitle = ({ children }) => {
 };
 
 const Rooms = () => {
+  const [showModal, setShowModal] = useState({
+    id: 0,
+    title: '',
+    show: false,
+  });
+
+  const open = (number) => {
+    setShowModal({ id: number, title: `Table - ${number}`,  show: true })
+  }
   return (
-    <Box sx={{ width: '100%', maxWidth: '1280px', margin: '0 auto' }}>
-      <Typography
-        sx={{
-          fontFamily: 'Inter',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          fontSize: '64px',
-          lineHeight: '16px',
-          color: '#B9B9B9',
-          marginTop: '20px',
-          marginBottom: '70px',
-        }}
-        gutterBottom
-        component='div'
-      >
-        TALKING ROOMS
-      </Typography>
-      <Box sx={{ margin: '0 auto' }}>
-        <Box sx={{ margin: '10px 0', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-          <Subtitle>FIRST BUILDING</Subtitle>
-          <Subtitle>SECOND BUILDING</Subtitle>
-        </Box>
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(100px, 480px)',
-              gridTemplateRows: 'repeat(2, minmax(100px, 1fr))',
-              gap: '27px',
-              marginRight: '20px',
-            }}
-          >
-            <Room number='1' icon={'/images/room-6.svg'} />
-            <Room number='2' icon={'/images/room-6.svg'} />
+    <>
+
+      <Box sx={{ width: '100%', maxWidth: '1280px', margin: '0 auto' }}>
+        <Typography
+          sx={{
+            fontFamily: 'Inter',
+            fontStyle: 'normal',
+            fontWeight: '600',
+            fontSize: '64px',
+            lineHeight: '16px',
+            color: '#B9B9B9',
+            marginTop: '20px',
+            marginBottom: '70px',
+          }}
+          gutterBottom
+          component='div'
+        >
+          TALKING ROOMS
+        </Typography>
+        <Box sx={{ margin: '0 auto' }}>
+          <Box sx={{ margin: '10px 0', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+            <Subtitle>FIRST BUILDING</Subtitle>
+            <Subtitle>SECOND BUILDING</Subtitle>
           </Box>
-          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px' }}>
-            <Box sx={{ display: 'grid', gridTemplateRows: 'minmax(100px, 220px) minmax(100px, 1fr)', gap: '14px' }}>
-              <Room number='3' icon={'/images/room-2.svg'} />
-              <Room number='4' icon={'/images/room-5.svg'} />
+          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(100px, 480px)',
+                gridTemplateRows: 'repeat(2, minmax(100px, 1fr))',
+                gap: '27px',
+                marginRight: '20px',
+              }}
+            >
+              <Room number='1' icon={'/images/room-6.svg'} openModal={open}/>
+              <Room number='2' icon={'/images/room-6.svg'} openModal={open}/>
             </Box>
-            <Box sx={{ display: 'grid', gridTemplateRows: '250px', alignContent: 'end', gap: '10px' }}>
-              <Room number='5' icon={'/images/room-3.svg'} />
+            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px' }}>
+              <Box sx={{ display: 'grid', gridTemplateRows: 'minmax(100px, 220px) minmax(100px, 1fr)', gap: '14px' }}>
+                <Room number='3' icon={'/images/room-2.svg'} openModal={open}/>
+                <Room number='4' icon={'/images/room-5.svg'} openModal={open}/>
+              </Box>
+              <Box sx={{ display: 'grid', gridTemplateRows: '250px', alignContent: 'end', gap: '10px' }}>
+                <Room number='5' icon={'/images/room-3.svg'} openModal={open}/>
+              </Box>
             </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
+
+      {showModal.show &&
+        <BookingModal
+          open={showModal.show}
+          title={showModal.title}
+          handleClose={() => {
+            setShowModal({
+              id: 0,
+              title: '',
+              show: false
+            })
+          }}
+        />}
+    </>
+
   );
 };
 
