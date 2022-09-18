@@ -32,20 +32,29 @@ const Index = () => {
     setLogin(true);
   };
 
-  const setUser = (userId) => {
-    localStorage.setItem('user', userId);
-  }
+  const setToken = (token) => {
+    localStorage.setItem('token', token);
+  };
 
   useEffect(() => {
     if (sendLogin && auth.email && auth.password) {
       setLogin(false);
       usersAPI
-        .loginUser(auth.email, auth.password)
-        .then((user) => {
-          router.push('/rooms');
-          setUser(user.id)
+        .signUp(auth.email, auth.password)
+        .then(() => {
+          usersAPI.logIn(auth.email, auth.password).then((token) => {
+            router.push('/rooms');
+            setToken(token);
+          });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          if (err?.response?.status === 400 || err?.response?.status === 401) {
+            usersAPI.logIn(auth.email, auth.password).then((token) => {
+              router.push('/rooms');
+              setToken(token);
+            });
+          }
+        });
     }
   }, [auth, sendLogin]);
 

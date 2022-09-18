@@ -3,11 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useGetUser } from '../../hooks/useGetUser';
 
 export default function Navbar() {
   const router = useRouter();
-  const user = useGetUser();
+  const user = null;
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -19,7 +18,7 @@ export default function Navbar() {
   };
 
   const logout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     router.push('/login');
   };
 
