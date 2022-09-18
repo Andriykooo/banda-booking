@@ -1,7 +1,8 @@
 import { Box, Typography } from '@mui/material';
 import * as React from 'react';
-import {useState} from "react";
 import {BookingModal} from "../../src/componetns/Modal/BookingModal";
+import { useState } from "react";
+import { usersAPI } from "../../src/api/auth-request";
 
 const Room = ({ number, icon ,openModal}) => {
   return (
@@ -69,6 +70,15 @@ const Subtitle = ({ children }) => {
 };
 
 const Rooms = () => {
+  const [roomData, setRoomData] = useState();
+
+  const handleGetRoom = (room) => {
+    const currentDate = new Date();
+    const endDate = currentDate.setDate(currentDate.getDate() + 5);
+    usersAPI.getMeetingRoom(room, currentDate.toString(), endDate.toString()).then((res) => {
+      setRoomData(res.data);
+    })
+  }
   const [showModal, setShowModal] = useState({
     id: 0,
     title: '',
@@ -77,6 +87,17 @@ const Rooms = () => {
 
   const open = (number) => {
     setShowModal({ id: number, title: `Table - ${number}`,  show: true })
+  }
+  const onHandlePost = () => {
+    const roomToSet = {
+      roomName: "open-space_left",
+      timeFrom: "2022-09-18T11:57:47.017Z",
+      timeTo: "2022-09-18T11:57:47.017Z",
+      userId: 0,
+    }
+    usersAPI.postMeetingRoom(roomToSet).then((res) => {
+      console.log(res, 'responseCreate');
+    })
   }
   return (
     <>
@@ -145,5 +166,6 @@ const Rooms = () => {
 
   );
 };
+
 
 export default Rooms;
