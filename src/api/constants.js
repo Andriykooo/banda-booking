@@ -3,4 +3,9 @@ export const api = {
   base: "/api",
   signUp: "/user/sign-up",
   logIn: "/auth/login",
+  booked_time: "/booked-time",
+  meeting_room: "/meeting-room",
+  booking: "/booking",
+  create: "/create",
+  remove: "/remove",
 };
