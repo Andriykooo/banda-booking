@@ -1,21 +1,17 @@
-import request from "./request";
+
+
 import {api} from "./constants";
+import instance from "./request";
 
-export class AuthRequest {
-
-  public loginUser = async (email: string, password: string): Promise<api> => {
+export const usersAPI = {
+  loginUser(email, password) {
     const url = `${api.schema + api.base + api.login}`;
     const params = {email, password};
-
-    const {data}: { data: any } = await request.post(url, params, {
-      headers: {"Content-type": "application/json"},
-    });
-
-    return data;
-  };
-
+    return instance.post(url, {
+      params
+    })
+      .then(response => {
+        return response.data
+      })
+  },
 }
-
-const instance = new AuthRequest();
-
-export default instance;

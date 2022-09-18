@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Box, Button, FormControl, TextField, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
-import request from '../../src/api/auth-request'
 import {useRouter} from "next/router";
+import {usersAPI} from "../../src/api/auth-request";
 
 
 const Index = () => {
-  const router =useRouter();
+  const router = useRouter();
   const [validate, setValidate] = useState(false);
   const [auth, setAuth] = useState({
     email: '',
@@ -21,15 +21,29 @@ const Index = () => {
     })
   }
 
-  useEffect(()=>{
-    if(auth.email && auth.password){
-      request.loginUser(auth.email, auth.password).then(()=>{
-        router.push('/rooms')
-      })
+  const send = (e) => {
+    e.preventDefault();
+    if (!auth.email || !auth.password) {
+      setValidate(true);
+      return
     }
 
-    console.log(validate)
-  },[validate]);
+    setValidate(false);
+
+
+  }
+
+  console.log(validate)
+  useEffect(() => {
+    if (!validate && auth.email && auth.password) {
+      usersAPI.loginUser(auth.email, auth.password)
+        .then(() => {
+          router.push('/rooms')
+        })
+        .catch((err) => console.log(err))
+    }
+
+  }, [validate]);
 
   return (
     <Box sx={{
@@ -41,21 +55,24 @@ const Index = () => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '100vh'
+      height: '100vh',
+      width:'100%'
     }}
     >
 
-      <FormControl sx={{
-        borderRadius:"20px",
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '20px',
-        marginTop:'20px',
-        background: '#F5F5F5',
-        padding: '40px'
-      }}>
+      <Box
+        component="form"
+        sx={{
+          borderRadius: "20px",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '20px',
+          marginTop: '20px',
+          background: '#F5F5F5',
+          padding: '40px'
+        }} onSubmit={send}>
 
         <Typography variant="h4" component="h4">
           Sign up, please
@@ -63,6 +80,7 @@ const Index = () => {
 
         <TextField
           required
+          error={validate}
           sx={{
             width: '480px',
             background: '#FFFFFF',
@@ -83,6 +101,7 @@ const Index = () => {
             borderRadius: '10px;'
           }}
           required
+          error={validate}
           id="outlined-disabled"
           label="password"
           name='password'
@@ -99,7 +118,7 @@ const Index = () => {
         }} type={"submit"}> Login</Button>
 
 
-      </FormControl>
+      </Box>
 
     </Box>
   );
