@@ -99,12 +99,14 @@ export default function Navbar() {
                 'aria-labelledby': 'basic-button',
               }}
             >
-              <MenuItem>
-                <Image src='/images/user-small.svg' height={20} width={20} />
-                <Typography variant='span' sx={{ marginLeft: '10px' }}>
-                  User {user?.username}
-                </Typography>
-              </MenuItem>
+             <Link href={'/account'}>
+               <MenuItem>
+                 <Image src='/images/user-small.svg' height={20} width={20} />
+                 <Typography variant='span' sx={{ marginLeft: '10px' }}>
+                   User {user?.username}
+                 </Typography>
+               </MenuItem>
+             </Link>
               <Divider />
               <MenuItem onClick={logout}>
                 <Typography variant='span' sx={{ marginRight: '10px' }}>

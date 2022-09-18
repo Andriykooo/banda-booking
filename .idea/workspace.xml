@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc8e360d-84c4-4d42-8285-e576df2a3145" name="Changes" comment="login">
-      <change afterPath="$PROJECT_DIR$/public/images/bg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/logout.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/user-small.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/user.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/componetns/NavBar/NavBar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useGetUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/kitchen/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/kitchen/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/rooms/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rooms/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/auth-request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth-request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componetns/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componetns/Layout/Layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componetns/Modal/BookingModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componetns/Modal/BookingModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componetns/NavBar/NavBar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componetns/NavBar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componetns/NavBar/NavBar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +34,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2EtGhghgoxEG6rLox4yeYan4OPc" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -64,14 +47,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/work/back/bandapixels_backend_",
+    "last_opened_file_path": "/Users/aleksandr/Documents/project/banda_pixels/booking_banda/banda-booking/src/api",
     "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "/Users/aleksandr/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/222.4167.33/PhpStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
+    "settings.editor.selected.configurable": "editor.preferences.import",
+    "ts.external.directory.path": "D:\\WebStorm 2022.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -81,7 +62,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -91,23 +72,17 @@
       <envs />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.dev" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a55831dc-9180-499b-9540-9a161884248e" name="Changes" comment="login" />
+      <changelist id="c9a7c5fc-5889-47a1-9112-72aa2a590783" name="Changes" comment="" />
       <created>1663407587901</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663407587901</updated>
       <workItem from="1663407589978" duration="10951000" />
       <workItem from="1663418995839" duration="3649000" />
-      <workItem from="1663449780272" duration="2731000" />
     </task>
     <task id="LOCAL-00001" summary="login">
       <created>1663413375656</created>
@@ -116,21 +91,7 @@
       <option name="project" value="LOCAL" />
       <updated>1663413375656</updated>
     </task>
-    <task id="LOCAL-00002" summary="login">
-      <created>1663447708573</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1663447708573</updated>
-    </task>
-    <task id="LOCAL-00003" summary="login">
-      <created>1663488983767</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1663488983768</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,19 +102,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -161,9 +110,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="login" />
-    <MESSAGE value="add kitchen room and update navBar" />
-    <MESSAGE value="add account page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add account page" />
+    <option name="LAST_COMMIT_MESSAGE" value="login" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
