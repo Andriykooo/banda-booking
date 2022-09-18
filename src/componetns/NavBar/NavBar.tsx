@@ -1,7 +1,7 @@
-import {AppBar, Avatar, Tab, Tabs, Typography} from "@mui/material";
-import {useEffect, useState} from "react";
+import { AppBar, Avatar, Tab, Tabs } from "@mui/material";
 import Link from "next/link";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
     const router = useRouter();
@@ -25,7 +25,7 @@ export default function Navbar() {
             <div style={{width: '100%'}}>
             <AppBar position="static" color="default" style={{ backgroundColor: "white", display: "flex", justifyContent: 'space-between', flexDirection: "inherit", padding: '0 40px 0 40px'}}>
                 <div style={{ width: "max-content", display: "flex", justifyContent: 'space-between', flexDirection: "inherit"}}>
-                    <div style={{ padding: '30px 0 0 0'}}>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
                         <img alt="Remy Sharp" src="https://bandapixels.com/images/logo-black.svg" style={{ width: '148px', height: '40px', marginRight: '20px'}} />
                     </div>
                     <Tabs
@@ -39,10 +39,10 @@ export default function Navbar() {
                         aria-label="scrollable auto tabs example"
                     >
                         <Link href={'/rooms'}>
-                            <Tab style={{ padding: '45px 16px 25px 16px'}} label="Перемовки" {...a11yProps(0)} />
+                            <Tab style={{ padding: '45px 16px 34px 16px'}} label="Перемовки" {...a11yProps(0)} />
                         </Link>
                        <Link  href={'/kitchen'}>
-                           <Tab style={{ padding: '45px 16px 25px 16px'}} label="Їжа приймалки" {...a11yProps(1)} />
+                           <Tab style={{ padding: '45px 16px 34px 16px'}} label="Їжа приймалки" {...a11yProps(1)} />
                        </Link>
                     </Tabs>
                 </div>
