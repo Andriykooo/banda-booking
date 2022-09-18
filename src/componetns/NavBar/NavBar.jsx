@@ -3,10 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useGetUser } from '../../hooks/useGetUser';
 
 export default function Navbar() {
   const router = useRouter();
-  const user = localStorage.getItem('user');
+  const user = useGetUser();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
