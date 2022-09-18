@@ -35,7 +35,8 @@ const Index = () => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '100vh'
+      height: '100vh',
+      width: '100vw'
     }}
     >
 
@@ -89,6 +90,8 @@ const Index = () => {
           height: '70px',
           background: '#EFE314',
           borderRadius: '48px',
+          fontWeight: '500',
+          fontSize: '20px',
           color: '#333333'
         }} type={"submit"}> Login</Button>
 
