@@ -102,7 +102,7 @@ export default function Navbar() {
               <MenuItem>
                 <Image src='/images/user-small.svg' height={20} width={20} />
                 <Typography variant='span' sx={{ marginLeft: '10px' }}>
-                  User {user.username}
+                  User {user?.username}
                 </Typography>
               </MenuItem>
               <Divider />

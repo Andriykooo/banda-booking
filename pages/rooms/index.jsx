@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import * as React from 'react';
-import {usersAPI} from "../../src/api/auth-request";
-import {useState} from "react";
+import { useState } from "react";
+import { usersAPI } from "../../src/api/auth-request";
 
 const Room = ({ number, onClick, icon }) => {
   return (
@@ -69,7 +69,6 @@ const Subtitle = ({ children }) => {
 const Rooms = () => {
     const [roomData, setRoomData] = useState();
 
-    console.log(roomData, 'roomRoom');
     const handleGetRoom = (room) => {
         const currentDate = new Date();
         const endDate = currentDate.setDate(currentDate.getDate() + 5);
@@ -123,7 +122,7 @@ const Rooms = () => {
               marginRight: '20px',
             }}
           >
-            <Room number='1' onClick={() => handleGetRoom('second-floor_left')} />
+            <Room number='1' onClick={() => handleGetRoom('second-floor_left')} icon={'/images/room-6.svg'} />
             <Room number='2' onClick={() => handleGetRoom('second-floor_right')} icon={'/images/room-6.svg'} />
           </Box>
           <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px' }}>
