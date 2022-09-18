@@ -3,4 +3,5 @@ export const api = {
   base: "/api",
   signUp: "/user/sign-up",
   logIn: "/auth/login",
+  getToken: "/auth/token-check"
 };

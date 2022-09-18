@@ -41,4 +41,22 @@ export const usersAPI = {
         return response.data;
       });
   },
+
+  getUser(token) {
+    const url = `${api.schema + api.base + api.getToken}`;
+
+    return instance
+      .get(
+        url,
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        return response.data;
+      });
+  },
 };

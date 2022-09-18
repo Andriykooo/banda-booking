@@ -32,7 +32,7 @@ const Index = () => {
     setLogin(true);
   };
 
-  const setToken = (token) => {
+  const setToken = ({token}) => {
     localStorage.setItem('token', token);
   };
 

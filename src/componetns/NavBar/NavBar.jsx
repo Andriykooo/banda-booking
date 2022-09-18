@@ -3,10 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useGetUser } from '../../hooks/useGetUser';
 
 export default function Navbar() {
   const router = useRouter();
-  const user = null;
+  const user = useGetUser();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -101,7 +102,7 @@ export default function Navbar() {
               <MenuItem>
                 <Image src='/images/user-small.svg' height={20} width={20} />
                 <Typography variant='span' sx={{ marginLeft: '10px' }}>
-                  User {user}
+                  User {user.username}
                 </Typography>
               </MenuItem>
               <Divider />
