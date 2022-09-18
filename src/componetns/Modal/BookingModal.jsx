@@ -66,7 +66,7 @@ export const BookingModal = ({open, title, handleClose}) => {
               dateFormat="MMMM d, yyyy h:mm aa"
             />
 
-            <h1>Тута щота должно быть, но не мае</h1>
+            <h1>Тута шота должно быть, но не мае</h1>
           </Box>
 
         </DialogContent>
