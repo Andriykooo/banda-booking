@@ -123,7 +123,7 @@ const Rooms = () => {
               marginRight: '20px',
             }}
           >
-            <Room number='1' onClick={() => handleGetRoom('second-floor_left')} />
+            <Room number='1' onClick={() => handleGetRoom('second-floor_left')} icon={'/images/room-6.svg'} />
             <Room number='2' onClick={() => handleGetRoom('second-floor_right')} icon={'/images/room-6.svg'} />
           </Box>
           <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px' }}>
