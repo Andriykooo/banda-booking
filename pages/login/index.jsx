@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Box, Button, FormControl, TextField, Typography} from "@mui/material";
+import {Box, Button, TextField, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {usersAPI} from "../../src/api/auth-request";
@@ -8,6 +8,7 @@ import {usersAPI} from "../../src/api/auth-request";
 const Index = () => {
   const router = useRouter();
   const [validate, setValidate] = useState(false);
+  const [sendLogin, setLogin]=useState(false)
   const [auth, setAuth] = useState({
     email: '',
     password: ''
@@ -29,13 +30,13 @@ const Index = () => {
     }
 
     setValidate(false);
-
-
+    setLogin(true)
   }
 
   console.log(validate)
   useEffect(() => {
-    if (!validate && auth.email && auth.password) {
+    if (sendLogin && auth.email && auth.password) {
+      setLogin(false)
       usersAPI.loginUser(auth.email, auth.password)
         .then(() => {
           router.push('/rooms')
@@ -43,7 +44,7 @@ const Index = () => {
         .catch((err) => console.log(err))
     }
 
-  }, [validate]);
+  }, [ auth, sendLogin] );
 
   return (
     <Box sx={{

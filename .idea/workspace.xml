@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a55831dc-9180-499b-9540-9a161884248e" name="Changes" comment="login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/kitchen/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/kitchen/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/login/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/rooms/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rooms/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componetns/Layout/Loyout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componetns/Layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componetns/NavBar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componetns/NavBar/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/auth-request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth-request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componetns/Modal/BookingModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componetns/Modal/BookingModal.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663447708573</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="login">
+      <created>1663488983767</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1663488983768</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
