@@ -1,12 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import * as React from 'react';
+import {BookingModal} from "../../src/componetns/Modal/BookingModal";
 import { useState } from "react";
 import { usersAPI } from "../../src/api/auth-request";
 
-const Room = ({ number, onClick, icon }) => {
+const Room = ({ number, icon ,openModal}) => {
   return (
     <Box
-      onClick={onClick}
       sx={{
         position: 'relative',
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
@@ -17,6 +17,9 @@ const Room = ({ number, onClick, icon }) => {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '50px',
+      }}
+      onClick={() => {
+        openModal(number)
       }}
     >
       <Typography
@@ -67,83 +70,102 @@ const Subtitle = ({ children }) => {
 };
 
 const Rooms = () => {
-    const [roomData, setRoomData] = useState();
+  const [roomData, setRoomData] = useState();
 
-    const handleGetRoom = (room) => {
-        const currentDate = new Date();
-        const endDate = currentDate.setDate(currentDate.getDate() + 5);
-        usersAPI.getMeetingRoom(room, currentDate.toString(), endDate.toString()).then((res) => {
-            setRoomData(res.data);
-        })
+  const handleGetRoom = (room) => {
+    const currentDate = new Date();
+    const endDate = currentDate.setDate(currentDate.getDate() + 5);
+    usersAPI.getMeetingRoom(room, currentDate.toString(), endDate.toString()).then((res) => {
+      setRoomData(res.data);
+    })
+  }
+  const [showModal, setShowModal] = useState({
+    id: 0,
+    title: '',
+    show: false,
+  });
+
+  const open = (number) => {
+    setShowModal({ id: number, title: `Table - ${number}`,  show: true })
+  }
+  const onHandlePost = () => {
+    const roomToSet = {
+      roomName: "open-space_left",
+      timeFrom: "2022-09-18T11:57:47.017Z",
+      timeTo: "2022-09-18T11:57:47.017Z",
+      userId: 0,
     }
-
-
-    const onHandlePost = () => {
-        const roomToSet = {
-            roomName: "open-space_left",
-            timeFrom: "2022-09-18T11:57:47.017Z",
-            timeTo: "2022-09-18T11:57:47.017Z",
-            userId: 0,
-        }
-        usersAPI.postMeetingRoom(roomToSet).then((res) => {
-            console.log(res, 'responseCreate');
-        })
-    }
+    usersAPI.postMeetingRoom(roomToSet).then((res) => {
+      console.log(res, 'responseCreate');
+    })
+  }
   return (
-    <Box sx={{ width: '100%', maxWidth: '1280px', margin: '0 auto' }}>
-      <Typography
-        sx={{
-          fontFamily: 'Inter',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          fontSize: '64px',
-          lineHeight: '16px',
-          color: '#B9B9B9',
-          marginTop: '20px',
-          marginBottom: '70px',
-        }}
-        gutterBottom
-        component='div'
-      >
-        TALKING ROOMS
-      </Typography>
-      <Box sx={{ margin: '0 auto' }}>
-        <Box sx={{ margin: '10px 0', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-          <Subtitle>FIRST BUILDING</Subtitle>
-          <Subtitle>SECOND BUILDING</Subtitle>
-        </Box>
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(100px, 480px)',
-              gridTemplateRows: 'repeat(2, minmax(100px, 1fr))',
-              gap: '27px',
-              marginRight: '20px',
-            }}
-          >
-            <Room number='1' onClick={() => handleGetRoom('second-floor_left')} icon={'/images/room-6.svg'} />
-            <Room number='2' onClick={() => handleGetRoom('second-floor_right')} icon={'/images/room-6.svg'} />
+    <>
+
+      <Box sx={{ width: '100%', maxWidth: '1280px', margin: '0 auto' }}>
+        <Typography
+          sx={{
+            fontFamily: 'Inter',
+            fontStyle: 'normal',
+            fontWeight: '600',
+            fontSize: '64px',
+            lineHeight: '16px',
+            color: '#B9B9B9',
+            marginTop: '20px',
+            marginBottom: '70px',
+          }}
+          gutterBottom
+          component='div'
+        >
+          TALKING ROOMS
+        </Typography>
+        <Box sx={{ margin: '0 auto' }}>
+          <Box sx={{ margin: '10px 0', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+            <Subtitle>FIRST BUILDING</Subtitle>
+            <Subtitle>SECOND BUILDING</Subtitle>
           </Box>
-          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px' }}>
-            <Box sx={{ display: 'grid', gridTemplateRows: 'minmax(100px, 220px) minmax(100px, 1fr)', gap: '14px' }}>
-              <Room number='3' onClick={() => handleGetRoom('open-space_top')} icon={'/images/room-2.svg'} />
-              <Room number='4' onClick={() => handleGetRoom('open-space_left')} icon={'/images/room-5.svg'} />
+          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(100px, 480px)',
+                gridTemplateRows: 'repeat(2, minmax(100px, 1fr))',
+                gap: '27px',
+                marginRight: '20px',
+              }}
+            >
+              <Room number='1' icon={'/images/room-6.svg'} openModal={open}/>
+              <Room number='2' icon={'/images/room-6.svg'} openModal={open}/>
             </Box>
-            <Box sx={{ display: 'grid', gridTemplateRows: '250px', alignContent: 'end', gap: '10px' }}>
-              <Room number='5' onClick={() => handleGetRoom('open-space_right')} icon={'/images/room-3.svg'} />
+            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px' }}>
+              <Box sx={{ display: 'grid', gridTemplateRows: 'minmax(100px, 220px) minmax(100px, 1fr)', gap: '14px' }}>
+                <Room number='3' icon={'/images/room-2.svg'} openModal={open}/>
+                <Room number='4' icon={'/images/room-5.svg'} openModal={open}/>
+              </Box>
+              <Box sx={{ display: 'grid', gridTemplateRows: '250px', alignContent: 'end', gap: '10px' }}>
+                <Room number='5' icon={'/images/room-3.svg'} openModal={open}/>
+              </Box>
             </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
+
+      {showModal.show &&
+        <BookingModal
+          open={showModal.show}
+          title={showModal.title}
+          handleClose={() => {
+            setShowModal({
+              id: 0,
+              title: '',
+              show: false
+            })
+          }}
+        />}
+    </>
+
   );
 };
 
-export async function getServerSideProps(context) {
-    return {
-        props: {}, // will be passed to the page component as props
-    }
-}
 
 export default Rooms;
