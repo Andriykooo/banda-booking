@@ -1,6 +1,5 @@
 html,
 body {
-  max-width: 1210px;
   padding: 0;
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -28,4 +27,16 @@ a {
 
 .MuiTabs-indicator {
   background-color: black;
+}
+
+#nprogress .bar {
+  background-color: yellow;
+
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
 }

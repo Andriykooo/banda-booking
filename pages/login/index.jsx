@@ -1,70 +1,110 @@
+import { Box, Button, TextField, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 import * as React from 'react';
-import {Box, Button, FormControl, TextField, Typography} from "@mui/material";
-import {useEffect, useState} from "react";
-import image from '../../public/images/bg.png';
-// const Image = require('/public/images/bg.png');
-
+import { useEffect, useState } from 'react';
+import { usersAPI } from '../../src/api/auth-request';
 
 const Index = () => {
+  const router = useRouter();
   const [validate, setValidate] = useState(false);
+  const [sendLogin, setLogin] = useState(false);
   const [auth, setAuth] = useState({
     email: '',
-    password: ''
-  })
+    password: '',
+  });
   const handlerOnChange = (e) => {
-    const {name, value} = e.target
+    const { name, value } = e.target;
 
     setAuth({
       ...auth,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
 
-  useEffect(()=>{
-    console.log(validate)
+  const send = (e) => {
+    e.preventDefault();
+    if (!auth.email || !auth.password) {
+      setValidate(true);
+      return;
+    }
 
-  },[validate]);
+    setValidate(false);
+    setLogin(true);
+  };
+
+  const setToken = ({token}) => {
+    localStorage.setItem('token', token);
+  };
+
+  useEffect(() => {
+    if (sendLogin && auth.email && auth.password) {
+      setLogin(false);
+      usersAPI
+        .signUp(auth.email, auth.password)
+        .then(() => {
+          usersAPI.logIn(auth.email, auth.password).then((token) => {
+            router.push('/rooms');
+            setToken(token);
+          });
+        })
+        .catch((err) => {
+          if (err?.response?.status === 400 || err?.response?.status === 401) {
+            usersAPI.logIn(auth.email, auth.password).then((token) => {
+              router.push('/rooms');
+              setToken(token);
+            });
+          }
+        });
+    }
+  }, [auth, sendLogin]);
 
   return (
-    <Box sx={{
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center center',
-      backgroundSize: 'cover',
-      backgroundImage: `url(/images/bg.png)`,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh'
-    }}
-    >
-
-      <FormControl sx={{
-        borderRadius:"20px",
+    <Box
+      sx={{
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+        backgroundSize: 'cover',
+        backgroundImage: `url(/images/bg.svg)`,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: '20px',
-        marginTop:'20px',
-        background: '#F5F5F5',
-        padding: '40px'
-      }}>
-
-        <Typography variant="h4" component="h4">
+        height: '100vh',
+        width: '100%',
+      }}
+    >
+      <Box
+        component='form'
+        sx={{
+          borderRadius: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '20px',
+          marginTop: '20px',
+          background: '#F5F5F5',
+          padding: '40px',
+        }}
+        onSubmit={send}
+        noVailde
+      >
+        <Typography variant='h4' component='h4'>
           Sign up, please
         </Typography>
 
         <TextField
           required
+          error={validate}
           sx={{
             width: '480px',
             background: '#FFFFFF',
             boxShadow: '0px 3px 4px rgba(0, 0, 0, 0.15)',
-            borderRadius: '10px;'
+            borderRadius: '10px;',
           }}
-          id="outlined-required"
-          label="email"
+          id='outlined-required'
+          label='email'
+          type='email'
           name='email'
           value={auth.email}
           onChange={(e) => handlerOnChange(e)}
@@ -74,29 +114,42 @@ const Index = () => {
             width: '480px',
             background: '#FFFFFF',
             boxShadow: '0px 3px 4px rgba(0, 0, 0, 0.15)',
-            borderRadius: '10px;'
+            borderRadius: '10px;',
           }}
           required
-          id="outlined-disabled"
-          label="password"
+          type='password'
+          error={validate}
+          id='outlined-disabled'
+          label='password'
           name='password'
           value={auth.password}
           onChange={(e) => handlerOnChange(e)}
         />
         <Button>Forgot password?</Button>
-        <Button sx={{
-          width: '480px',
-          height: '70px',
-          background: '#EFE314',
-          borderRadius: '48px',
-          color: '#333333'
-        }} type={"submit"}> Login</Button>
-
-
-      </FormControl>
-
+        <Button
+          sx={{
+            width: '480px',
+            height: '70px',
+            background: '#EFE314',
+            borderRadius: '48px',
+            fontWeight: '500',
+            fontSize: '20px',
+            color: '#333333',
+          }}
+          type={'submit'}
+        >
+          {' '}
+          Login
+        </Button>
+      </Box>
     </Box>
   );
 };
 
-export default Index
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
+
+export default Index;

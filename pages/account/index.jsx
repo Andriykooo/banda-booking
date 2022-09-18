@@ -1,16 +1,19 @@
 import * as React from 'react';
 import {Avatar, Box, Button, Divider, List, ListItem, ListItemText} from "@mui/material";
 import Typography from "@mui/material/Typography";
+import {useGetUser} from "../../src/hooks/useGetUser";
 
 
 const Account = () => {
+    const user = useGetUser();
+
     return (
         <div style={{padding: '40px'}}>
             <div>
                 <div style={{ display: "flex", flexDirection: "column",  justifyContent:  "center",  alignItems: "center", width: "100%" }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    <Avatar alt="Remy Sharp" src="/images/user.svg" />
                     <Typography gutterBottom variant='h5' component='div' sx={{marginTop: '20px'}}>
-                        user Name
+                        {user?.username}
                     </Typography>
                 </div>
                 <Box sx={{ display: 'flex', marginTop: '20px'}}>
