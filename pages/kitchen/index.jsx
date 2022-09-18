@@ -1,8 +1,30 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import * as React from 'react';
 
 const table = require('/public/svg/table.svg');
+
+const Table = ({ number }) => {
+  return (
+    <Box sx={{ minWidth: '230px', position: 'relative' }}>
+      <Image component='img' height='230px' width='230px' src={table} alt='table' />
+      <Typography
+        variant='h3'
+        component='h3'
+        sx={{
+          fontFamily: 'Inter',
+          color: '#b9b9b9',
+          top: '46%',
+          left: '48%',
+          transform: 'translate(-50%, -50%)',
+          position: 'absolute',
+        }}
+      >
+        {number}
+      </Typography>
+    </Box>
+  );
+};
 
 const Kitchen = () => {
   return (
@@ -14,7 +36,7 @@ const Kitchen = () => {
         justifyContent: 'space-between',
         width: '100%',
         maxWidth: '1179px',
-        margin: '0 auto'
+        margin: '0 auto',
       }}
     >
       <div
@@ -35,18 +57,10 @@ const Kitchen = () => {
           DINING ROOM
         </Typography>
       </div>
-      <div style={{ minWidth: '230px' }}>
-        <Image component='img' height='230px' width='230px' src={table} alt='table' />
-      </div>
-      <div style={{ minWidth: '230px' }}>
-        <Image component='img' height='230px' width='230px' src={table} alt='table' />
-      </div>
-      <div style={{ minWidth: '230px' }}>
-        <Image component='img' height='230px' width='230px' src={table} alt='table' />
-      </div>
-      <div style={{ minWidth: '230px' }}>
-        <Image component='img' height='230px' width='230px' src={table} alt='table' />
-      </div>
+      <Table number={1} />
+      <Table number={2} />
+      <Table number={3} />
+      <Table number={4} />
     </div>
   );
 };
