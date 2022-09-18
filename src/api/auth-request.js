@@ -1,22 +1,44 @@
-
-
-import {api} from "./constants";
-import instance from "./request";
+import { api } from './constants';
+import instance from './request';
 
 export const usersAPI = {
-  loginUser(email, password) {
-    const url = `${api.schema + api.base + api.login}`;
-    const params = {email, password};
-    return instance.post(url, {
-      ...params,
-    },
-      {
-        headers: {
-          "Content-type": "application/json",
+  signUp(email, password) {
+    const url = `${api.schema + api.base + api.signUp}`;
+    const params = { email, password };
+    return instance
+      .post(
+        url,
+        {
+          ...params,
         },
-      })
-      .then(response => {
-        return response.data
-      })
+        {
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }
+      )
+      .then((response) => {
+        return response.data;
+      });
   },
-}
+
+  logIn(email, password) {
+    const url = `${api.schema + api.base + api.logIn}`;
+    const token = 'Basic ' + btoa(unescape(encodeURIComponent(email + ':' + password)));
+
+    return instance
+      .post(
+        url,
+        {},
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: token,
+          },
+        }
+      )
+      .then((response) => {
+        return response.data;
+      });
+  },
+};
