@@ -72,7 +72,7 @@ const Index = () => {
           marginTop: '20px',
           background: '#F5F5F5',
           padding: '40px'
-        }} onSubmit={send}>
+        }} onSubmit={send} noVailde>
 
         <Typography variant="h4" component="h4">
           Sign up, please
@@ -114,6 +114,8 @@ const Index = () => {
           height: '70px',
           background: '#EFE314',
           borderRadius: '48px',
+          fontWeight: '500',
+          fontSize: '20px',
           color: '#333333'
         }} type={"submit"}> Login</Button>
 
