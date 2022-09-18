@@ -13,7 +13,7 @@ const Room = ({ children, number, icon }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '120px 0 73px',
+        padding: '50px',
       }}
     >
       <Typography
@@ -30,15 +30,35 @@ const Room = ({ children, number, icon }) => {
 
 const Subtitle = ({ children }) => {
   return (
-    <Typography
-      sx={{
-        fontFamily: 'Inter',
-        fontWeight: 600,
-        fontSize: '24px',
-      }}
-    >
-      {children}
-    </Typography>
+    <div style={{}}>
+      <Typography
+        sx={{
+          fontFamily: 'Inter',
+          fontWeight: 600,
+          fontSize: '24px',
+        }}
+      >
+        <div
+          style={{
+            position: 'relative',
+            width: 'max-content'
+          }}
+
+        >
+          {children}
+          <div
+            style={{
+              position: 'absolute',
+              width: '110%',
+              height: '5px',
+              backgroundColor: 'yellow',
+              bottom: 10,
+              zIndex: -1,
+            }}
+          />
+        </div>
+      </Typography>
+    </div>
   );
 };
 
@@ -53,13 +73,15 @@ const Rooms = () => {
           fontSize: '64px',
           lineHeight: '16px',
           color: '#B9B9B9',
+          marginTop: '20px',
+          marginBottom: '70px',
         }}
         gutterBottom
         component='div'
       >
         TALKING ROOMS
       </Typography>
-      <Box sx={{margin: '0 auto'}}>
+      <Box sx={{ margin: '0 auto' }}>
         <Box sx={{ margin: '10px 0', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
           <Subtitle>FIRST BUILDING</Subtitle>
           <Subtitle>SECOND BUILDING</Subtitle>
@@ -69,7 +91,7 @@ const Rooms = () => {
             sx={{
               display: 'grid',
               gridTemplateColumns: 'minmax(100px, 480px)',
-              gridTemplateRows: 'repeat(2, minmax(100px, 300px))',
+              gridTemplateRows: 'repeat(2, minmax(100px, 1fr))',
               gap: '27px',
               marginRight: '20px',
             }}
@@ -78,12 +100,12 @@ const Rooms = () => {
             <Room number='2' icon={'/images/room-6.svg'} />
           </Box>
           <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px' }}>
-            <Box sx={{ display: 'grid', gridTemplateRows: '250px 363px', gap: '14px' }}>
-              <Room number='1' icon={'/images/room-2.svg'} />
-              <Room number='2' icon={'/images/room-5.svg'} />
+            <Box sx={{ display: 'grid', gridTemplateRows: 'minmax(100px, 220px) minmax(100px, 1fr)', gap: '14px' }}>
+              <Room number='3' icon={'/images/room-2.svg'} />
+              <Room number='4' icon={'/images/room-5.svg'} />
             </Box>
             <Box sx={{ display: 'grid', gridTemplateRows: '250px', alignContent: 'end', gap: '10px' }}>
-              <Room number='3' icon={'/images/room-3.svg'} />
+              <Room number='5' icon={'/images/room-3.svg'} />
             </Box>
           </Box>
         </Box>

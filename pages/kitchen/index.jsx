@@ -6,7 +6,17 @@ const table = require('/public/svg/table.svg');
 
 const Kitchen = () => {
   return (
-    <>
+    <div
+      style={{
+        display: 'flex',
+        gap: '40px',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        width: '100%',
+        maxWidth: '1179px',
+        margin: '0 auto'
+      }}
+    >
       <div
         style={{ maxWidth: '640px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
@@ -37,7 +47,7 @@ const Kitchen = () => {
       <div style={{ minWidth: '230px' }}>
         <Image component='img' height='230px' width='230px' src={table} alt='table' />
       </div>
-    </>
+    </div>
   );
 };
 
