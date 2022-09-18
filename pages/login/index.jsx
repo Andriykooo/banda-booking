@@ -50,7 +50,7 @@ const Index = () => {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center center',
       backgroundSize: 'cover',
-      backgroundImage: `url(/images/bg.png)`,
+      backgroundImage: `url(/images/bg.svg)`,
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
