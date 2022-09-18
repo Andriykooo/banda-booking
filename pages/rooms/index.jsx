@@ -86,7 +86,7 @@ const Rooms = () => {
   });
 
   const open = (number) => {
-    setShowModal({ id: number, title: `Table - ${number}`,  show: true })
+    setShowModal({ id: number, title: `Room - ${number}`,  show: true })
   }
   const onHandlePost = () => {
     const roomToSet = {
