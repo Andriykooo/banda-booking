@@ -33,7 +33,6 @@ const Index = () => {
 
   }
 
-  console.log(validate)
   useEffect(() => {
     if (!validate && auth.email && auth.password) {
       usersAPI.loginUser(auth.email, auth.password)
@@ -41,8 +40,7 @@ const Index = () => {
           router.push('/rooms')
         })
         .catch((err) => console.log(err))
-    }
-
+    };
   }, [validate]);
 
   return (
@@ -89,6 +87,7 @@ const Index = () => {
           }}
           id="outlined-required"
           label="email"
+          type='email'
           name='email'
           value={auth.email}
           onChange={(e) => handlerOnChange(e)}
@@ -101,6 +100,7 @@ const Index = () => {
             borderRadius: '10px;'
           }}
           required
+          type='password'
           error={validate}
           id="outlined-disabled"
           label="password"
@@ -125,5 +125,11 @@ const Index = () => {
     </Box>
   );
 };
+
+export async function getServerSideProps(context) {
+    return {
+        props: {}, // will be passed to the page component as props
+    }
+}
 
 export default Index
