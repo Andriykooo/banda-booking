@@ -42,8 +42,9 @@ export const usersAPI = {
       });
   },
 
-  getUser(token) {
+  getUser() {
     const url = `${api.schema + api.base + api.getToken}`;
+    const token = localStorage.getItem('token');
 
     return instance
       .get(url, {
@@ -61,14 +62,25 @@ export const usersAPI = {
     const url = `${
       api.schema + api.base + api.meeting_room + api.booked_time
     }?roomName=${roomName}&timeFrom=${timeFrom}&timeTo=${timeTo}`;
-    return instance.get(url).then((response) => {
-      return response.data;
-    });
+
+    const token = localStorage.getItem('token');
+
+    return instance
+      .get(url, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      });
   },
 
   postMeetingRoom(roomToSet) {
     const url = `${api.schema + api.base + api.meeting_room + api.booking + api.create}`;
-    const token = 'Basic ' + btoa(unescape(encodeURIComponent(email + ':' + password)));
+    const token = localStorage.getItem('token');
+
     return instance
       .post(
         url,
@@ -89,6 +101,13 @@ export const usersAPI = {
 
   deleteMeetingRoom(userId, roomId) {
     const url = `${api.schema + api.base + api.meeting_room + api.booking`/${userId}` + api.remove}`;
-    return instance.delete(url);
+    const token = localStorage.getItem('token');
+
+    return instance.delete(url, {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: token,
+      },
+    });
   },
 };
