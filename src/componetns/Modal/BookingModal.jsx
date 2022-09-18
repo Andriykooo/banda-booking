@@ -1,24 +1,56 @@
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import {Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@mui/material";
 
-export const BookingModal = () => {
+
+export const BookingModal = ({open, title, handleClose}) => {
+  const closeModal = () => {
+    handleClose();
+  }
+
+  const sendRegister = () => {
+    closeModal();
+  }
+
   return (
-    <Modal
+    <Dialog
       open={open}
-      onClose={handleClose}
-      aria-labelledby='modal-modal-title'
-      aria-describedby='modal-modal-description'
+      onClose={() => closeModal()}
+      aria-describedby="alert-dialog-slide-description"
+
     >
-      <Box sx={style}>
-        <Typography id='modal-modal-title' variant='h6' component='h2'>
-          Text in a modal
-        </Typography>
-        <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
-      </Box>
-    </Modal>
+<Box
+  sx={{
+  width: '600px'
+}}>
+  <DialogTitle sx={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems:'center',
+    flexDirection: 'column',
+    gap: '10px'
+  }}>
+    <Box>
+      <img alt="Remy Sharp" src="https://bandapixels.com/images/logo-black.svg"
+           style={{width: '148px', height: '40px', marginRight: '20px'}}/>
+    </Box>
+    <box>
+      Registration {title}
+    </box>
+  </DialogTitle>
+
+  <DialogContent>
+    <DialogContentText id="alert-dialog-slide-description">
+      re
+    </DialogContentText>
+  </DialogContent>
+
+  <DialogActions>
+    <Button variant='contained' color='error' onClick={() => closeModal()}>Close</Button>
+    <Button variant='contained' color='success' onClick={() => sendRegister()}>Apply</Button>
+  </DialogActions>
+</Box>
+
+    </Dialog>
+
   );
 };

@@ -1,6 +1,6 @@
 export const api = {
-  schema: process.env.REACT_APP_URL,
+  schema: 'http://192.168.88.139:3001',
   base: "/api",
-  login: "/login",
+  login: "/user/sign-up",
   logout: "/logout",
 };
