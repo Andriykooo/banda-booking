@@ -32,6 +32,7 @@ const Subtitle = ({ children }) => {
   return (
     <div style={{}}>
       <Typography
+        variant='div'
         sx={{
           fontFamily: 'Inter',
           fontWeight: 600,
@@ -64,7 +65,7 @@ const Subtitle = ({ children }) => {
 
 const Rooms = () => {
   return (
-    <>
+    <Box sx={{ width: '100%', maxWidth: '1280px', margin: '0 auto' }}>
       <Typography
         sx={{
           fontFamily: 'Inter',
@@ -110,7 +111,7 @@ const Rooms = () => {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 };
 
