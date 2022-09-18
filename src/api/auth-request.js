@@ -46,17 +46,49 @@ export const usersAPI = {
     const url = `${api.schema + api.base + api.getToken}`;
 
     return instance
-      .get(
+      .get(url, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      });
+  },
+
+  getMeetingRoom(roomName, timeFrom, timeTo) {
+    const url = `${
+      api.schema + api.base + api.meeting_room + api.booked_time
+    }?roomName=${roomName}&timeFrom=${timeFrom}&timeTo=${timeTo}`;
+    return instance.get(url).then((response) => {
+      return response.data;
+    });
+  },
+
+  postMeetingRoom(roomToSet) {
+    const url = `${api.schema + api.base + api.meeting_room + api.booking + api.create}`;
+    const token = 'Basic ' + btoa(unescape(encodeURIComponent(email + ':' + password)));
+    return instance
+      .post(
         url,
+        {
+          ...roomToSet,
+        },
         {
           headers: {
             'Content-type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            Authorization: token,
           },
         }
       )
       .then((response) => {
         return response.data;
       });
+  },
+
+  deleteMeetingRoom(userId, roomId) {
+    const url = `${api.schema + api.base + api.meeting_room + api.booking`/${userId}` + api.remove}`;
+    return instance.delete(url);
   },
 };
