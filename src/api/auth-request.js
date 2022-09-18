@@ -8,8 +8,13 @@ export const usersAPI = {
     const url = `${api.schema + api.base + api.login}`;
     const params = {email, password};
     return instance.post(url, {
-      params
-    })
+      ...params,
+    },
+      {
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
       .then(response => {
         return response.data
       })

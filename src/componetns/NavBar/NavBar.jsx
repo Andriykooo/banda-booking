@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 
 export default function Navbar() {
   const router = useRouter();
+  const user = localStorage.getItem('user');
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -14,6 +15,11 @@ export default function Navbar() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('user');
+    router.push('/login');
   };
 
   const [value, setValue] = useState(0);
@@ -95,11 +101,11 @@ export default function Navbar() {
               <MenuItem>
                 <Image src='/images/user-small.svg' height={20} width={20} />
                 <Typography variant='span' sx={{ marginLeft: '10px' }}>
-                  User 1
+                  User {user}
                 </Typography>
               </MenuItem>
               <Divider />
-              <MenuItem>
+              <MenuItem onClick={logout}>
                 <Typography variant='span' sx={{ marginRight: '10px' }}>
                   Logout out
                 </Typography>
